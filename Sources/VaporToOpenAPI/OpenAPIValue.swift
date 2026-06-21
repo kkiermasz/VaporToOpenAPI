@@ -161,7 +161,7 @@ indirect enum OpenAPIValue {
 		case let .example(encodable):
 			return try .encodeSchema(encodable, into: &schemas)
 		case let .type(decodable):
-			return try .decodeSchema(decodable, into: &schemas)
+			return try SchemaInferenceFallback.decodeSchema(decodable, into: &schemas)
 		case let .schema(schemaObject):
 			return .value(schemaObject)
 		case let .parameters(properties, nestedSchemas):
